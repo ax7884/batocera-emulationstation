@@ -662,6 +662,10 @@ int main(int argc, char* argv[])
 			{
 				TRYCATCH("InputManager::parseEvent", InputManager::getInstance()->parseEvent(event, &window));
 
+				if (event.type == SDL_JOYAXISMOTION) {
+					SDL_FlushEvents(SDL_JOYAXISMOTION, SDL_JOYAXISMOTION);
+				}
+				
 				if (event.type == SDL_QUIT)
 					running = false;
 			} 
